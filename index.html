@@ -1301,110 +1301,63 @@
 <script>
 const answers = {};
 
-const productData = {
-  antiage: {
-    type: "Piel Antiedad", 
-    desc: "Tu piel necesita activos regeneradores que estimulen el colágeno y combatan el estrés oxidativo. La constancia es clave.",
-    products: [
-      { brand: "SkinCeuticals", name: "C E Ferulic Serum", img: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80", url: "https://theskincareclub.com.ar/productos/skinceuticals-c-e-ferulic/" },
-      { brand: "Augustinus Bader", name: "The Rich Cream", img: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&q=80", url: "https://theskincareclub.com.ar/productos/augustinus-bader-the-rich-cream/" },
-      { brand: "SK-II", name: "Skinpower Cream", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80", url: "https://theskincareclub.com.ar/productos/sk-ii-skinpower-advanced-cream/" }
-    ]
-  },
-  acne: {
-    type: "Piel con Acné",
-    desc: "Tu piel necesita ingredientes que regulen el sebo, desobstruyan el poro y mantengan la barrera hidrolipídica intacta.",
-    products: [
-      { brand: "SkinCeuticals", name: "Blemish + Age Defense", img: "https://images.unsplash.com/photo-1643185539104-3622eb1be14d?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=SkinCeuticals+Blemish" },
-      { brand: "Eminence", name: "Stone Crop Mist", img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=80", url: "https://theskincareclub.com.ar/productos/eminence-stone-crop-hydrating-mist/" },
-      { brand: "Allies of Skin", name: "Peptides & Antioxidants", img: "https://images.unsplash.com/photo-1570194065650-d99fb4b8ccb0?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=Allies+of+Skin" }
-    ]
-  },
-  manchas: {
-    type: "Piel con Manchas",
-    desc: "Tu piel responde bien a la vitamina C, niacinamida y exfoliantes suaves que unifican el tono de forma progresiva.",
-    products: [
-      { brand: "SkinCeuticals", name: "C E Ferulic Serum", img: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80", url: "https://theskincareclub.com.ar/productos/skinceuticals-c-e-ferulic/" },
-      { brand: "SK-II", name: "Skinpower Cream", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80", url: "https://theskincareclub.com.ar/productos/sk-ii-skinpower-advanced-cream/" },
-      { brand: "Tata Harper", name: "Resurfacing Serum", img: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=Tata+Harper" }
-    ]
-  },
-  sequedad: {
-    type: "Piel Seca",
-    desc: "Tu piel necesita ceramidas y ácido hialurónico para restaurar la barrera cutánea y retener la humedad en profundidad.",
-    products: [
-      { brand: "Augustinus Bader", name: "The Rich Cream", img: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&q=80", url: "https://theskincareclub.com.ar/productos/augustinus-bader-the-rich-cream/" },
-      { brand: "May Lindstrom", name: "The Blue Cocoon", img: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&q=80", url: "https://theskincareclub.com.ar/productos/may-lindstrom-skin-the-blue-cocoon/" },
-      { brand: "SK-II", name: "Skinpower Advanced Cream", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80", url: "https://theskincareclub.com.ar/productos/sk-ii-skinpower-advanced-cream/" }
-    ]
-  },
-  brillo: {
-    type: "Piel Grasa",
-    desc: "Tu piel se beneficia de una rutina que regule el sebo sin resecar, con activos que minimizan los poros visibles.",
-    products: [
-      { brand: "SkinCeuticals", name: "Blemish + Age Defense", img: "https://images.unsplash.com/photo-1643185539104-3622eb1be14d?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=SkinCeuticals+Blemish" },
-      { brand: "Biotherm", name: "Aquasource Serum", img: "https://images.unsplash.com/photo-1570194065650-d99fb4b8ccb0?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=Biotherm" },
-      { brand: "Allies of Skin", name: "Peptides Glow Serum", img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=Allies+of+Skin" }
-    ]
-  },
-  opaca: {
-    type: "Piel Opaca",
-    desc: "Tu piel necesita vitamina C, AHAs y tratamientos iluminadores para recuperar luminosidad y un glow saludable.",
-    products: [
-      { brand: "SkinCeuticals", name: "C E Ferulic Serum", img: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80", url: "https://theskincareclub.com.ar/productos/skinceuticals-c-e-ferulic/" },
-      { brand: "SK-II", name: "Skinpower Cream", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80", url: "https://theskincareclub.com.ar/productos/sk-ii-skinpower-advanced-cream/" },
-      { brand: "Tata Harper", name: "Resurfacing Serum", img: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=Tata+Harper" }
-    ]
-  }
-};
-
 function selectOption(btn, step, value) {
-  const parent = btn.closest(".quiz-step");
-  parent.querySelectorAll(".quiz-option").forEach(o => o.classList.remove("selected"));
-  btn.classList.add("selected");
+  var stepEl = document.getElementById('step-' + step);
+  if (stepEl) {
+    var opts = stepEl.getElementsByClassName('quiz-option');
+    for (var i = 0; i < opts.length; i++) opts[i].classList.remove('selected');
+  }
+  btn.classList.add('selected');
   answers[step] = value;
-  const nb = document.getElementById("btn-" + step);
-  nb.classList.remove("locked");
+  var nb = document.getElementById('btn-' + step);
+  if (nb) nb.classList.remove('locked');
 }
+
 function nextStep(step) {
-  ['step-1','step-2','step-3'].forEach(id => {
-    const el = document.getElementById(id);
-    if(el) el.classList.remove('active');
-  });
-  const next = document.getElementById('step-' + step);
-  if(next) next.classList.add('active');
+  for (var i = 1; i <= 3; i++) {
+    var el = document.getElementById('step-' + i);
+    if (el) el.classList.remove('active');
+  }
+  var next = document.getElementById('step-' + step);
+  if (next) next.classList.add('active');
 }
+
 function showResult() {
-  ['step-1','step-2','step-3'].forEach(id => {
-    const el = document.getElementById(id);
-    if(el) el.classList.remove('active');
-  });
-  const concern = answers[1] || "antiage";
-  const data = productData[concern] || productData.antiage;
-  document.getElementById("result-type").textContent = data.type;
-  document.getElementById("result-desc").textContent = data.desc;
-  const grid = document.getElementById("result-products-grid");
-  grid.innerHTML = data.products.map(p => `
-    <a class="result-product" href="${p.url}" target="_blank" style="text-decoration:none;cursor:pointer;display:block;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-      <img class="rp-visual" src="${p.img}" alt="${p.name}" onerror="this.style.background=\'#3A342C\';this.style.display=\'block\'">
-      <span class="rp-brand">${p.brand}</span>
-      <span class="rp-name">${p.name}</span>
-      <span class="rp-link">Ver producto →</span>
-    </a>
-  `).join("");
-  document.getElementById("quiz-result").classList.add("active");
+  for (var i = 1; i <= 3; i++) {
+    var el = document.getElementById('step-' + i);
+    if (el) el.classList.remove('active');
+  }
+  var concern = answers[1] || 'antiage';
+  var data = productData[concern] || productData.antiage;
+  document.getElementById('result-type').textContent = data.type;
+  document.getElementById('result-desc').textContent = data.desc;
+  var grid = document.getElementById('result-products-grid');
+  var html_out = '';
+  for (var j = 0; j < data.products.length; j++) {
+    var p = data.products[j];
+    html_out += '<a class="result-product" href="' + p.url + '" target="_blank" style="text-decoration:none;cursor:pointer;display:block;">';
+    html_out += '<img class="rp-visual" src="' + p.img + '" alt="' + p.name + '">';
+    html_out += '<span class="rp-brand">' + p.brand + '</span>';
+    html_out += '<span class="rp-name">' + p.name + '</span>';
+    html_out += '<span class="rp-link">Ver producto →</span>';
+    html_out += '</a>';
+  }
+  grid.innerHTML = html_out;
+  document.getElementById('quiz-result').classList.add('active');
 }
+
 function resetQuiz() {
-  document.getElementById("quiz-result").classList.remove("active");
-  ['step-1','step-2','step-3'].forEach(id => {
-    const el = document.getElementById(id);
-    if(el) el.querySelectorAll(".quiz-option").forEach(o => o.classList.remove("selected"));
-  });
-  ["btn-1","btn-2","btn-3"].forEach(id => {
-    const b = document.getElementById(id);
-    if(b) { b.classList.add("locked"); }
-  });
-  document.getElementById("step-1").classList.add("active");
+  document.getElementById('quiz-result').classList.remove('active');
+  for (var i = 1; i <= 3; i++) {
+    var stepEl = document.getElementById('step-' + i);
+    if (stepEl) {
+      var opts = stepEl.getElementsByClassName('quiz-option');
+      for (var j = 0; j < opts.length; j++) opts[j].classList.remove('selected');
+    }
+    var b = document.getElementById('btn-' + i);
+    if (b) b.classList.add('locked');
+  }
+  document.getElementById('step-1').classList.add('active');
 }
 
 // ── AI SKINCARE ADVISOR ──
