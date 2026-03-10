@@ -106,7 +106,7 @@
   }
   .btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(201,169,110,0.4); }
   .quiz-next-btn { font-size: 11px; }
-  .quiz-next-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+  .quiz-next-btn.locked { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
   .btn-secondary {
     background: transparent; color: var(--white); padding: 16px 32px;
     font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
@@ -824,7 +824,7 @@
           <div class="quiz-progress">
             <div class="quiz-dot active"></div><div class="quiz-dot"></div><div class="quiz-dot"></div>
           </div>
-          <button class="btn-primary quiz-next-btn" onclick="nextStep(2)" id="btn-1" disabled>Siguiente →</button>
+          <button class="btn-primary quiz-next-btn" onclick="nextStep(2)" id="btn-1">Siguiente →</button>
         </div>
       </div>
 
@@ -857,7 +857,7 @@
           <div class="quiz-progress">
             <div class="quiz-dot done"></div><div class="quiz-dot active"></div><div class="quiz-dot"></div>
           </div>
-          <button class="btn-primary quiz-next-btn" onclick="nextStep(3)" id="btn-2" disabled>Siguiente →</button>
+          <button class="btn-primary quiz-next-btn" onclick="nextStep(3)" id="btn-2">Siguiente →</button>
         </div>
       </div>
 
@@ -885,7 +885,7 @@
           <div class="quiz-progress">
             <div class="quiz-dot done"></div><div class="quiz-dot done"></div><div class="quiz-dot active"></div>
           </div>
-          <button class="btn-primary quiz-next-btn" onclick="showResult()" id="btn-3" disabled>Ver mi rutina →</button>
+          <button class="btn-primary quiz-next-btn" onclick="showResult()" id="btn-3">Ver mi rutina →</button>
         </div>
       </div>
 
@@ -1364,7 +1364,7 @@ function selectOption(btn, step, value) {
   btn.classList.add("selected");
   answers[step] = value;
   const nb = document.getElementById("btn-" + step);
-  nb.disabled = false;
+  nb.classList.remove("locked");
 }
 function nextStep(step) {
   document.querySelectorAll(".quiz-step").forEach(s => s.classList.remove("active"));
@@ -1392,7 +1392,7 @@ function resetQuiz() {
   document.querySelectorAll(".quiz-option").forEach(o => o.classList.remove("selected"));
   ["btn-1","btn-2","btn-3"].forEach(id => {
     const b = document.getElementById(id);
-    if(b) { b.disabled = true; }
+    if(b) { b.classList.add("locked"); }
   });
   document.getElementById("step-1").classList.add("active");
 }
@@ -1527,6 +1527,14 @@ function smoothTo(e, id) {
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
+// Lock quiz buttons on load via class (not HTML disabled)
+document.addEventListener('DOMContentLoaded', function() {
+  ['btn-1','btn-2','btn-3'].forEach(id => {
+    const b = document.getElementById(id);
+    if(b) b.classList.add('locked');
+  });
+});
 
 // Nav scroll behavior
 const navEl = document.querySelector("nav");
