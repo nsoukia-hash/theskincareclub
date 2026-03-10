@@ -1299,6 +1299,64 @@
 </footer>
 
 <script>
+
+var productData = {
+  antiage: {
+    type: "Piel Antiedad",
+    desc: "Tu piel necesita activos que estimulen la producción de colágeno y combatan los radicales libres. Retinol, vitamina C y péptidos son tus aliados.",
+    products: [
+      { brand: "SkinCeuticals", name: "C E Ferulic", img: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=SkinCeuticals+C+E+Ferulic" },
+      { brand: "Augustinus Bader", name: "The Rich Cream", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=Augustinus+Bader" },
+      { brand: "SK-II", name: "Skinpower Cream", img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=SK-II" }
+    ]
+  },
+  acne: {
+    type: "Piel con Acné",
+    desc: "El control del sebo sin deshidratar la piel es clave. Ácido salicílico para el poro, niacinamida para la inflamación, hidratación liviana siempre.",
+    products: [
+      { brand: "SkinCeuticals", name: "Blemish + Age Defense", img: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=SkinCeuticals+Blemish" },
+      { brand: "Allies of Skin", name: "Molecular Savior", img: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=Allies+of+Skin" },
+      { brand: "Barbara Sturm", name: "Anti-Aging Serum", img: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=Barbara+Sturm" }
+    ]
+  },
+  manchas: {
+    type: "Manchas y Pigmentación",
+    desc: "Vitamina C para inhibir la melanina, niacinamida para unificar el tono, AHAs para renovar la superficie. SPF todos los días sin excepción.",
+    products: [
+      { brand: "SkinCeuticals", name: "Discoloration Defense", img: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=SkinCeuticals+Discoloration" },
+      { brand: "Sulwhasoo", name: "Luminature Glow Serum", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=Sulwhasoo" },
+      { brand: "SK-II", name: "Facial Treatment Essence", img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=SK-II+Essence" }
+    ]
+  },
+  sequedad: {
+    type: "Piel Seca y Deshidratada",
+    desc: "Ceramidas para reparar la barrera cutánea, ácido hialurónico en capas, aceites nutritivos que sellan la hidratación. Evitá limpiadores con sulfatos.",
+    products: [
+      { brand: "Augustinus Bader", name: "The Cream", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=Augustinus+Bader+Cream" },
+      { brand: "Tata Harper", name: "Hyaluronic Acid Serum", img: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=Tata+Harper" },
+      { brand: "May Lindstrom", name: "The Blue Cocoon", img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=May+Lindstrom" }
+    ]
+  },
+  brillo: {
+    type: "Piel Grasa y Brillosa",
+    desc: "Regular el sebo sin agredir la barrera es el objetivo. Limpieza suave, activos seborreguladres y hidratación oil-free son esenciales.",
+    products: [
+      { brand: "SkinCeuticals", name: "Silymarin CF", img: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=SkinCeuticals+Silymarin" },
+      { brand: "Allies of Skin", name: "1A Overnight Mask", img: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=Allies+of+Skin+mask" },
+      { brand: "Biotherm", name: "Aquasource Gel", img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=Biotherm" }
+    ]
+  },
+  opaca: {
+    type: "Piel Opaca sin Luminosidad",
+    desc: "AHAs para renovar la superficie, vitamina C para el glow, exfoliación semanal suave. Tu piel necesita acelerar el recambio celular.",
+    products: [
+      { brand: "SkinCeuticals", name: "Glycolic 10 Renew", img: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=SkinCeuticals+Glycolic" },
+      { brand: "SK-II", name: "R.N.A. Power Cream", img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=SK-II+RNA" },
+      { brand: "Tata Harper", name: "Resurfacing Serum", img: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400&q=80", url: "https://theskincareclub.com.ar/search/?q=Tata+Harper+Resurfacing" }
+    ]
+  }
+};
+
 const answers = {};
 
 function selectOption(btn, step, value) {
@@ -1462,7 +1520,8 @@ async function askAI() {
 
 function resetAI() {
   selectedConcerns.clear();
-  document.querySelectorAll('.ai-chip').forEach(c => c.classList.remove('selected'));
+  var chips = document.getElementsByClassName('ai-chip');
+  for (var k = 0; k < chips.length; k++) chips[k].classList.remove('selected');
   document.getElementById('aiContext').value = '';
   document.getElementById('aiProducts').value = '';
   document.getElementById('aiResponseText').style.display = 'none';
@@ -1515,7 +1574,8 @@ const obs = new IntersectionObserver((entries) => {
     if(e.isIntersecting) { e.target.style.transitionDelay = (i*0.05)+"s"; e.target.classList.add("visible"); obs.unobserve(e.target); }
   });
 }, { threshold: 0.1 });
-document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+var revealEls = document.getElementsByClassName('reveal');
+for (var ri = 0; ri < revealEls.length; ri++) obs.observe(revealEls[ri]);
 </script>
 </body>
 </html>
