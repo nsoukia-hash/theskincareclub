@@ -1367,11 +1367,18 @@ function selectOption(btn, step, value) {
   nb.classList.remove("locked");
 }
 function nextStep(step) {
-  document.querySelectorAll(".quiz-step").forEach(s => s.classList.remove("active"));
-  document.getElementById("step-" + step).classList.add("active");
+  ['step-1','step-2','step-3'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.classList.remove('active');
+  });
+  const next = document.getElementById('step-' + step);
+  if(next) next.classList.add('active');
 }
 function showResult() {
-  document.querySelectorAll(".quiz-step").forEach(s => s.classList.remove("active"));
+  ['step-1','step-2','step-3'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.classList.remove('active');
+  });
   const concern = answers[1] || "antiage";
   const data = productData[concern] || productData.antiage;
   document.getElementById("result-type").textContent = data.type;
@@ -1389,7 +1396,10 @@ function showResult() {
 }
 function resetQuiz() {
   document.getElementById("quiz-result").classList.remove("active");
-  document.querySelectorAll(".quiz-option").forEach(o => o.classList.remove("selected"));
+  ['step-1','step-2','step-3'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.querySelectorAll(".quiz-option").forEach(o => o.classList.remove("selected"));
+  });
   ["btn-1","btn-2","btn-3"].forEach(id => {
     const b = document.getElementById(id);
     if(b) { b.classList.add("locked"); }
