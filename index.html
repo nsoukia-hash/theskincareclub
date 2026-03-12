@@ -617,7 +617,7 @@
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: none; }
 
-  /* RESPONSIVE */
+  /* RESPONSIVE — TABLET */
   @media (max-width: 1024px) {
     nav { padding: 0 32px; } .nav-links { display: none; }
     .hero-content { padding: 0 40px; }
@@ -640,14 +640,205 @@
     .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
     .result-products { grid-template-columns: 1fr 1fr; }
   }
+
+  /* RESPONSIVE — MOBILE */
   @media (max-width: 640px) {
-    .problems-grid { grid-template-columns: repeat(2, 1fr); }
-    .hero-title { font-size: 44px; }
-    .quiz-options { grid-template-columns: 1fr 1fr; }
-    .result-products { grid-template-columns: 1fr; }
-    .footer-top { grid-template-columns: 1fr; }
-    .hero-stats { flex-wrap: wrap; }
-    .quiz-hook { flex-direction: column; text-align: center; gap: 8px; }
+
+    /* --- ANNOUNCEMENT BAR --- */
+    .announcement-bar {
+      font-size: 9.5px;
+      padding: 8px 12px;
+      letter-spacing: 0.12em;
+      line-height: 1.6;
+    }
+    .announcement-bar span { margin: 0 8px; }
+
+    /* --- NAV --- */
+    nav {
+      padding: 0 20px;
+      height: 60px;
+      top: 32px;
+    }
+    .nav-logo img { height: 30px; }
+    .nav-cart {
+      padding: 8px 14px;
+      font-size: 9px !important;
+      letter-spacing: 0.12em !important;
+      white-space: nowrap;
+    }
+
+    /* --- HERO --- */
+    .hero { height: 100svh; align-items: flex-end; padding-bottom: 100px; }
+    .hero-content {
+      padding: 0 20px;
+      max-width: 100%;
+    }
+    .hero-tag { margin-bottom: 16px; font-size: 9px; }
+    .hero-title {
+      font-size: clamp(38px, 10vw, 52px);
+      margin-bottom: 16px;
+      line-height: 1.08;
+    }
+    .hero-subtitle {
+      font-size: 13px;
+      margin-bottom: 28px;
+      max-width: 100%;
+      line-height: 1.65;
+    }
+    .hero-cta {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .hero-cta a {
+      width: 100%;
+      text-align: center;
+      padding: 14px 20px !important;
+      font-size: 10px !important;
+      box-sizing: border-box;
+    }
+    .hero-stats {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding: 0 20px;
+      gap: 0;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .hero-stats::-webkit-scrollbar { display: none; }
+    .hero-stat {
+      padding: 16px 28px 16px 0;
+      margin-right: 28px;
+      flex-shrink: 0;
+    }
+    .hero-stat-num { font-size: 26px; }
+    .hero-stat-label { font-size: 9px; }
+
+    /* --- QUIZ HOOK --- */
+    .quiz-hook {
+      flex-direction: column;
+      text-align: center;
+      gap: 6px;
+      padding: 14px 20px;
+    }
+    .quiz-hook-text { font-size: 11.5px; letter-spacing: 0.08em; }
+
+    /* --- QUIZ BODY --- */
+    .quiz-pitch { padding: 40px 20px; }
+    .quiz-pitch-title { font-size: 28px; }
+    .quiz-pitch-desc { font-size: 12px; }
+    .quiz-pitch-reasons li { font-size: 12px; }
+    .quiz-widget { padding: 32px 20px; }
+    .quiz-question { font-size: 22px; margin-bottom: 24px; }
+    .quiz-options {
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .quiz-option { padding: 14px 12px; }
+    .quiz-option-emoji { font-size: 18px; margin-bottom: 6px; }
+    .quiz-option-text { font-size: 12px; }
+    .quiz-option-sub { font-size: 9.5px; }
+    .quiz-nav { flex-direction: column-reverse; gap: 16px; align-items: stretch; }
+    .quiz-nav .btn-primary { width: 100%; text-align: center; }
+    .quiz-progress { justify-content: center; }
+
+    /* --- QUIZ RESULT --- */
+    .result-skin-type { font-size: 34px; }
+    .result-description { font-size: 13px; }
+    .result-products { grid-template-columns: 1fr; gap: 10px; }
+
+    /* --- PROBLEMS SECTION --- */
+    .problems-section { padding: 60px 20px; }
+    .section-header { margin-bottom: 40px; }
+    .section-title { font-size: clamp(28px, 8vw, 40px); }
+    .section-subtitle { font-size: 13px; }
+    .problems-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .problem-card { padding: 24px 16px; }
+    .problem-icon { font-size: 24px; margin-bottom: 12px; }
+    .problem-name { font-size: 15px; }
+    .problem-desc { font-size: 11px; }
+
+    /* --- AI SECTION --- */
+    .ai-section { padding: 60px 20px; }
+    .ai-header { margin-bottom: 32px; gap: 20px; }
+    .ai-title { font-size: clamp(28px, 8vw, 40px); }
+    .ai-desc { font-size: 13px; }
+    .ai-pill { display: none; }
+    .ai-input-panel { padding: 28px 20px; gap: 20px; }
+    .ai-chips { gap: 6px; }
+    .ai-chip { padding: 7px 12px; font-size: 11.5px; }
+    .ai-textarea { font-size: 13px; }
+    .ai-submit { width: 100%; justify-content: center; padding: 16px 20px; }
+    .ai-response-body { min-height: 260px; max-height: 380px; padding: 20px; }
+    .ai-response-text { font-size: 13px; }
+    .ai-response-footer { padding: 14px 20px; gap: 10px; }
+    .ai-shop-btn, .ai-reset-btn { flex: 1; text-align: center; }
+
+    /* --- EDITORIAL SECTION --- */
+    .editorial-section { padding: 60px 20px; }
+    .editorial-grid { grid-template-columns: 1fr; }
+    .editorial-card:first-child { grid-row: auto; }
+    .editorial-card:first-child .editorial-visual { height: 240px; }
+    .editorial-card:not(:first-child) .editorial-visual { height: 180px; }
+    .editorial-content { padding: 24px 20px; }
+    .editorial-title { font-size: 20px; }
+
+    /* --- BRANDS SECTION --- */
+    .brands-section { padding: 48px 0; }
+
+    /* --- TRUST SECTION --- */
+    .trust-section { padding: 48px 20px; }
+    .trust-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .trust-item { padding: 16px 8px; }
+    .trust-title { font-size: 16px; }
+    .trust-desc { font-size: 11px; }
+
+    /* --- WHATSAPP SECTION --- */
+    .whatsapp-section { padding: 60px 20px; }
+    .wa-inner { gap: 32px; }
+    .wa-title { font-size: clamp(28px, 8vw, 38px); }
+    .wa-desc { font-size: 13px; }
+    .wa-btn { width: 100%; justify-content: center; padding: 16px 20px; }
+    .wa-benefits li { font-size: 12px; }
+
+    /* --- NEWSLETTER --- */
+    .newsletter-section { padding: 60px 20px; }
+    .newsletter-title { font-size: clamp(28px, 8vw, 40px); }
+    .newsletter-sub { font-size: 13px; margin-bottom: 32px; }
+    .newsletter-form { flex-direction: column; }
+    .newsletter-input { padding: 16px 18px; font-size: 14px; }
+    .newsletter-btn { padding: 16px; width: 100%; }
+
+    /* --- FOOTER --- */
+    footer { padding: 48px 20px 32px; }
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding-bottom: 40px;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+    }
+
+    /* --- FLOATING WHATSAPP --- */
+    .wa-float { bottom: 20px; right: 16px; }
+    .wa-float-toggle { width: 50px; height: 50px; }
+    .wa-float-toggle::before { display: none; }
+
+    /* --- GENERAL BUTTONS --- */
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      text-align: center;
+      padding: 15px 20px;
+    }
   }
 </style>
 </head>
