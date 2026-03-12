@@ -24,14 +24,30 @@
   html { scroll-behavior: smooth; }
   body { font-family: "Jost", sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
 
-  /* ANNOUNCEMENT BAR — inside hero as top strip */
+  /* ANNOUNCEMENT BAR — scrolling ticker */
   .announcement-bar {
     position: absolute; top: 0; left: 0; right: 0; z-index: 201;
-    background: rgba(44,40,32,0.75); color: var(--gold-light); text-align: center;
-    padding: 10px 20px; font-size: 11px; letter-spacing: 0.18em; font-weight: 300; text-transform: uppercase;
+    background: rgba(44,40,32,0.75); color: var(--gold-light);
+    padding: 10px 0; font-size: 11px; letter-spacing: 0.18em; font-weight: 300; text-transform: uppercase;
     backdrop-filter: blur(8px);
+    overflow: hidden;
+    white-space: nowrap;
   }
-  .announcement-bar span { margin: 0 20px; opacity: 0.5; }
+  .announcement-bar-track {
+    display: inline-flex;
+    animation: ticker 22s linear infinite;
+    white-space: nowrap;
+  }
+  .announcement-bar:hover .announcement-bar-track { animation-play-state: paused; }
+  .announcement-bar-item {
+    display: inline-flex; align-items: center;
+    padding: 0 40px;
+  }
+  .announcement-bar-item span { margin: 0 20px; opacity: 0.35; }
+  @keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 
   /* NAV */
   nav {
@@ -848,7 +864,10 @@
 <section class="hero">
   <!-- Announcement bar within hero -->
   <div class="announcement-bar">
-    6 cuotas sin interés <span>·</span> Envíos gratis a todo el país <span>·</span> 20% OFF con transferencia bancaria
+    <div class="announcement-bar-track">
+      <span class="announcement-bar-item">6 cuotas sin interés <span>✦</span> Envíos gratis a todo el país <span>✦</span> 20% OFF con transferencia bancaria <span>✦</span> Marcas de lujo importadas <span>✦</span> Asesoramiento personalizado</span>
+      <span class="announcement-bar-item">6 cuotas sin interés <span>✦</span> Envíos gratis a todo el país <span>✦</span> 20% OFF con transferencia bancaria <span>✦</span> Marcas de lujo importadas <span>✦</span> Asesoramiento personalizado</span>
+    </div>
   </div>
 
   <!-- NAV -->
